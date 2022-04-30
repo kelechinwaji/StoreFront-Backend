@@ -2,8 +2,8 @@
     "dev": {
       "driver": "pg",
       "host": "127.0.0.1",
-      "database": "lagos_lgas",
-      "user": "auto_user",
+      "database": "fantex",
+      "user": "store_user",
       "password": "admin04"
     },
     "test": {
