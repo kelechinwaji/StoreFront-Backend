@@ -82,7 +82,7 @@ const productRoutes = (app: express.Application) => {
   app.post("/products", create); 
   app.put("/products/:id", update); 
   app.delete("/products/:id", destroy);
-  app.get("/product", byCategory);
+  app.get("/product", byCategory); // Debugging
 };
 
 export default productRoutes;

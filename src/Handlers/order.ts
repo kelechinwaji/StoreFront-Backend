@@ -46,7 +46,7 @@ const create = async (req: Request, res: Response) => {
 const orderRoutes = (app: express.Application) =>{
   app.get("/orders", index);
   app.get("/order/:id", show);
-  app.post("/order", create);
+  app.post("/order", create); // Debugging
 }
 
 export default orderRoutes;
