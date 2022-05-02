@@ -2,6 +2,7 @@ import { type } from "os";
 import client from "../database";
 
 export type Product = {
+  id?: string;
   name: string;
   price: string;
   category: string;
@@ -46,11 +47,10 @@ export class ProductStore {
     }
   }
 
-  async update(product: Product): Promise<Product> {
+  async update(id: string, product: Product): Promise<Product> {
     try {
       const conn = await client.connect();
-      const sql =
-        "UPDATE products SET name = ($1), price = ($2), category = ($3)  WHERE id = ($4) RETURNING *";
+      const sql = `UPDATE products SET name = ($1), price = ($2), category = ($3)  WHERE id = ${id} RETURNING *`;
       const result = await conn.query(sql, [
         product.name,
         product.price,
