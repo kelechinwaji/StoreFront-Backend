@@ -45,9 +45,16 @@ const create = async (req: Request, res: Response) => {
 };
 
 const authenticate = async (req: Request, res: Response) =>{
+    //@ts-ignore
+    const user: User = {
+        userName: req.body.username,
+        password: req.body.password
+    }
     try {
         const result = await store.authenticate(req.body.username, req.body.password)
-        res.json(result);
+        //@ts-ignore
+        const token = jwt.sign({user: result}, process.env.TOKEN_SECRET)
+        res.json(token);
     } catch (error) {
         res.status(401);
         res.json(error)
