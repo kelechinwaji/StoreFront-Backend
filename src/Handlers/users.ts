@@ -43,11 +43,21 @@ const create = async (req: Request, res: Response) => {
   }
 };
 
+const authenticate = async (req: Request, res: Response) =>{
+    try {
+        const result = await store.authenticate(req.body.username, req.body.password)
+        res.json(result);
+    } catch (error) {
+        res.status(401);
+        res.json(error)
+    }
+}
+
 const userRoutes = (app: express.Application) => {
   // app.get("/products", index);
   // app.get("/products/:id", show);
   app.post("/users", create);
-  // app.put("/products/:id", update);
+  app.post("/login", authenticate);
   // app.delete("/products/:id", destroy);
   // app.get("/product", byCategory); // Debugging
 };
