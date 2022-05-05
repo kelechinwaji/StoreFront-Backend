@@ -1,6 +1,8 @@
 import express, { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { verifyAuthToken } from "../auth services/verifyAuth";
 import { ProductStore, Product } from "../models/products";
+
 
 const store = new ProductStore(); // this provides method from model
 
@@ -87,9 +89,9 @@ const byCategory = async (req: Request, res: Response) => {
 const productRoutes = (app: express.Application) => {
   app.get("/products", index);
   app.get("/products/:id", show);
-  app.post("/products", create);
-  app.put("/products/:id", update);
-  app.delete("/products/:id", destroy);
+  app.post("/products", verifyAuthToken, create);
+  app.put("/products/:id", verifyAuthToken, update);
+  app.delete("/products/:id", verifyAuthToken, destroy);
   app.get("/product", byCategory); // Debugging
 };
 
