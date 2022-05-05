@@ -1,4 +1,5 @@
 import bcrypt, { hash } from "bcrypt";
+import jwt from "jsonwebtoken";
 import express, { Request, Response } from "express";
 import { userStore, User } from "../models/users";
 
@@ -33,10 +34,10 @@ const create = async (req: Request, res: Response) => {
   };
   try {
     const newUser = await store.create(addUser);
-    //   //@ts-ignore
-    //   const token = Jwt.sign({ user: newUser }, process.env.TOKEN_SECRET);
+      //@ts-ignore
+      const token = jwt.sign({ user: newUser }, process.env.TOKEN_SECRET);
 
-    res.json(newUser);
+    res.json(token);
   } catch (error) {
     res.status(400);
     res.json(error);

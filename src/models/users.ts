@@ -1,4 +1,5 @@
 import bcrypt, { hash } from "bcrypt";
+import jwt from "jsonwebtoken";
 import { type } from "os";
 import client from "../database";
 
