@@ -2,11 +2,11 @@ import { compileFunction } from "vm";
 import client from "../database";
 
 export type Order = {
-  id?: string,
-  productId: string,
-  quantity: string,
-  userId: string,
-  status: string
+  id?: string;
+  productId: string;
+  quantity: string;
+  userId: string;
+  status: string;
 };
 
 export class OrderStore {
@@ -39,7 +39,12 @@ export class OrderStore {
       const conn = await client.connect();
       const sql =
         "INSERT INTO orders (productId, quantity, userId, status) VALUES ($1, $2, $3) RETURNING *";
-      const values = [order.productId, order.quantity, order.userId, order.status];
+      const values = [
+        order.productId,
+        order.quantity,
+        order.userId,
+        order.status,
+      ];
       const result = await conn.query(sql, values);
       conn.release();
       return result.rows[0];

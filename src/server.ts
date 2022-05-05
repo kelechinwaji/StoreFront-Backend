@@ -1,6 +1,8 @@
 import express from "express";
 import orderRoutes from "./Handlers/order";
 import productRoutes from "./Handlers/products";
+import userRoutes from "./Handlers/users";
+
 
 
 
@@ -11,6 +13,7 @@ app.use(express.urlencoded({extended: false}))
 
 productRoutes(app);
 orderRoutes(app);
+userRoutes(app);
 
 app.listen(PORT, () => {
   console.log(`app is listening on port: ${PORT}`);

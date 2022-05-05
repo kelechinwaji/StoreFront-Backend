@@ -35,18 +35,16 @@ const create = async (req: Request, res: Response) => {
     res.json(addOrder);
   } catch (error) {
     console.log(error);
-    
+
     res.status(400);
     res.json(error);
   }
 };
 
-
-
-const orderRoutes = (app: express.Application) =>{
+const orderRoutes = (app: express.Application) => {
   app.get("/orders", index);
   app.get("/order/:id", show);
   app.post("/order", create); // Debugging
-}
+};
 
 export default orderRoutes;
