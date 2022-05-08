@@ -7,7 +7,7 @@ export const verifyAuthToken = (req: Request, res: Response, next) => {
       const authorizationHeader = req.headers.authorization;
       const token = authorizationHeader?.split(" ")[1];
       //@ts-ignore
-      const decoded = Jwt.verify(token, process.env.TOKEN_SECRET);
+      const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
       next();
     } catch (error) {
       res.status(401);
