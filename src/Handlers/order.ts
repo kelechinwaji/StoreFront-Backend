@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
+import { verifyAuthToken } from "../auth services/verifyAuth";
 import { OrderStore, Order } from "../models/order";
-const store = new OrderStore(); // this provides method from model
 
+const store = new OrderStore(); // this provides method from model
 
 const index = async (req: Request, res: Response) => {
   try {
@@ -25,9 +26,8 @@ const show = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
   try {
-   
     const order: Order = {
-     userId: req.body.userId,
+      userId: req.body.userId,
       status: req.body.status,
     };
     const addOrder = await store.create(order);
@@ -40,10 +40,53 @@ const create = async (req: Request, res: Response) => {
   }
 };
 
+const showUsers = async (req: Request, res: Response) => {
+  try {
+    const seeUser = await store.showUsers(req.params.id);
+    res.json(seeUser);
+  } catch (error) {
+    res.status(400);
+    res.json(error);
+  }
+};
+
+const completedOrders = async (req: Request, res: Response) => {
+  try {
+    const comOrders = await store.completedOrders(req.params.id);
+    res.json(comOrders);
+  } catch (error) {
+    res.status(400);
+    res.json(error);
+  }
+};
+const currentOrders = async (req: Request, res: Response) => {
+  try {
+    const curOrders = await store.currentOrders(req.params.id);
+    res.json(curOrders);
+  } catch (error) {
+    res.status(400);
+    res.json(error);
+  }
+};
+
+const destroy = async (req: Request, res: Response) => {
+  try {
+    const delOrder = await store.destroy(req.params.id);
+    res.json(delOrder);
+  } catch (error) {
+    res.status(400);
+    res.json(error);
+  }
+};
+
 const orderRoutes = (app: express.Application) => {
   app.get("/orders", index);
   app.get("/order/:id", show);
-  app.post("/order", create); // Debugging
+  app.post("/order", verifyAuthToken, create); // Debugging
+  app.get("/order/complete", verifyAuthToken, completedOrders); // Debugging
+  app.get("/order/current", verifyAuthToken, currentOrders); // Debugging
+  app.get("/order/users", verifyAuthToken, showUsers); // Debugging
+  app.delete("/order/:id", verifyAuthToken, destroy); // Debugging
 };
 
 export default orderRoutes;

@@ -84,4 +84,16 @@ export class OrderStore {
       throw new Error(`could not get completed order with id:${id}  ${error}`);
     }
   }
+
+  async destroy(id: string): Promise<Order>{
+    try {
+      const conn = await client.connect();
+      const sql = `DELETE FROM orders WHERE id = ${id}`;
+      const result = await conn.query(sql);
+      conn.release();
+      return result.rows[0]
+    } catch (error) {
+      throw new Error(`could not delete order with id:${id}  ${error}`);
+    }
+  }
 }
