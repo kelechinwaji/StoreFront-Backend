@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import { OrderStore, Order } from "../models/order";
-
 const store = new OrderStore(); // this provides method from model
+
 
 const index = async (req: Request, res: Response) => {
   try {
@@ -25,10 +25,9 @@ const show = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
   try {
+   
     const order: Order = {
-      productId: req.body.productId,
-      quantity: req.body.quantity,
-      userId: req.body.userId,
+     userId: req.body.userId,
       status: req.body.status,
     };
     const addOrder = await store.create(order);
