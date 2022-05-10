@@ -9,9 +9,9 @@
     "test": {
       "driver": "pg",
       "host": "127.0.0.1",
-      "database": "fantasy_worlds_test",
-      "user": "test_user",
-      "password": "password123"
+      "database": "fantex_test",
+      "user": "store_user",
+      "password": "admin04"
     }
   }
   
