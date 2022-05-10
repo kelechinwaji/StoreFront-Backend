@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import { verifyAuthToken } from "../auth services/verifyAuth";
 import { ProductStore, Product } from "../models/products";
 
-
 const store = new ProductStore(); // this provides method from model
 
 const index = async (req: Request, res: Response) => {

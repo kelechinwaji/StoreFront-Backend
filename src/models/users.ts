@@ -60,29 +60,29 @@ export class userStore {
     }
   }
 
-  async update(id: string, firstName: string, lastName: string): Promise<User>{
-      try {
-          const conn = await client.connect();
-          const sql = `UPDATE users SET firstname=($1), lastname=($2) WHERE id =${id} RETURNING *`;
-          const values = [firstName, lastName]
-          const result = await conn.query(sql, values)
-          conn.release();
-          return result.rows[0]
-      } catch (error) {
-        throw new Error(`could not update user ${error}`);
-      }
+  async update(id: string, firstName: string, lastName: string): Promise<User> {
+    try {
+      const conn = await client.connect();
+      const sql = `UPDATE users SET firstname=($1), lastname=($2) WHERE id =${id} RETURNING *`;
+      const values = [firstName, lastName];
+      const result = await conn.query(sql, values);
+      conn.release();
+      return result.rows[0];
+    } catch (error) {
+      throw new Error(`could not update user ${error}`);
+    }
   }
 
-  async destroy(id: string): Promise<User>{
-      try {
-          const conn = await client.connect();
-          const sql = `DELETE FROM users WHERE id = ${id} RETURNING *`;
-          const result = await conn.query(sql);
-          conn.release();
-          return result.rows[0]
-      } catch (error) {
-        throw new Error(`could not delete user ${error}`);
-      }
+  async destroy(id: string): Promise<User> {
+    try {
+      const conn = await client.connect();
+      const sql = `DELETE FROM users WHERE id = ${id} RETURNING *`;
+      const result = await conn.query(sql);
+      conn.release();
+      return result.rows[0];
+    } catch (error) {
+      throw new Error(`could not delete user ${error}`);
+    }
   }
 
   async authenticate(username: string, password: string): Promise<User | null> {

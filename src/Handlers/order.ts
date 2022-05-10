@@ -30,12 +30,10 @@ const create = async (req: Request, res: Response) => {
       userId: req.body.userId,
       status: req.body.status,
     };
-    
+
     const addOrder = await store.create(order);
     res.json(addOrder);
   } catch (error) {
-    console.log(error);
-
     res.status(400);
     res.json(error);
   }
@@ -56,8 +54,6 @@ const completedOrders = async (req: Request, res: Response) => {
     const comOrders = await store.completedOrders(req.params.id);
     res.json(comOrders);
   } catch (error) {
-   
-    
     res.status(400);
     res.json(error);
   }
@@ -85,11 +81,11 @@ const destroy = async (req: Request, res: Response) => {
 const orderRoutes = (app: express.Application) => {
   app.get("/orders", index);
   app.get("/order/:id", show);
-  app.post("/order",  create); 
-  app.get("/order/complete/:id", completedOrders); 
-  app.get("/order/current/:id", currentOrders); 
-  app.get("/order/show/user/:id",  showUsers); 
-  app.delete("/order/:id",  destroy); // Debugging
+  app.post("/order", create);
+  app.get("/order/complete/:id", completedOrders);
+  app.get("/order/current/:id", currentOrders);
+  app.get("/order/show/user/:id", showUsers);
+  app.delete("/order/:id", destroy); // Debugging
 };
 
 export default orderRoutes;

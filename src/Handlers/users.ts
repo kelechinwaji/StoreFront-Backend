@@ -11,8 +11,6 @@ const index = async (req: Request, res: Response) => {
     const user = await store.index();
     res.json(user);
   } catch (error) {
-    console.log(error);
-    
     res.status(400);
     res.json(error);
   }
@@ -52,9 +50,7 @@ const update = async (req: Request, res: Response) => {
   try {
     const updated = await store.update(req.params.id, firstname, lastname);
     res.json(updated);
-  } catch (error) {  
-      console.log(error);
-      
+  } catch (error) {
     res.status(400);
     res.json(error);
   }
@@ -95,7 +91,7 @@ const userRoutes = (app: express.Application) => {
   app.get("/user/:id", show);
   app.post("/users", create);
   app.post("/login", authenticate);
-  app.patch("/user/:id", verifyAuthToken, update);// debugging
+  app.patch("/user/:id", verifyAuthToken, update); // debugging
   app.delete("/user/:id", verifyAuthToken, destroy);
 };
 
