@@ -25,17 +25,17 @@ The available API's for FORTE provides these Endpoints:
 
 FORTE was built with a list of modern tools and technology:
 
-⋅⋅* [Node](https://nodejs.org/en/):Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
-⋅⋅* [TypeScript](https://www.typescriptlang.org/): TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
-⋅⋅* [PostgreSQL](https://www.postgresql.org/): PostgreSQL is a powerful, open source object-relational database system
-⋅⋅* [JasonWebTokens](https://jwt.io/): JWT allows you to decode, verify and generate JWT.
-⋅⋅* [ExpressJs](https://expressjs.com/): Fast, un-opinionated, minimalist web framework for Node.js
-⋅⋅* [Jasmine](https://jasmine.github.io/): Jasmine for testing
-⋅⋅* [Es-lint](https://eslint.org/): Find and fix problems in your code
-⋅⋅* [Prettier](https://prettier.io/): For formatting code 
+* [Node](https://nodejs.org/en/):Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+* [TypeScript](https://www.typescriptlang.org/): TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.
+* [PostgreSQL](https://www.postgresql.org/): PostgreSQL is a powerful, open source object-relational database system
+* [JasonWebTokens](https://jwt.io/): JWT allows you to decode, verify and generate JWT.
+* [ExpressJs](https://expressjs.com/): Fast, un-opinionated, minimalist web framework for Node.js
+* [Jasmine](https://jasmine.github.io/): Jasmine for testing
+* [Es-lint](https://eslint.org/): Find and fix problems in your code
+* [Prettier](https://prettier.io/): For formatting code 
 
 These tools listed are available on the `package.json` file.
 
-Please Note: Node and PostgreSQL would need to be installed on your local machine.
+* Please Note: Node and PostgreSQL would need to be installed on your local machine.
 
 
