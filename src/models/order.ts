@@ -33,16 +33,22 @@ export class OrderStore {
   }
 
   async create(order: Order): Promise<Order> {
+    
+    
     try {
       const conn = await client.connect();
       const sql =
-        "INSERT INTO orders ( userId, status) VALUES ($1, $2) RETURNING *";
+        "INSERT INTO orders ( user_id, status) VALUES ($1, $2) RETURNING *";
       const values = [
         order.userId,
         order.status,
       ];
+      
+      
       const result = await conn.query(sql, values);
       conn.release();
+     
+      
       return result.rows[0];
     } catch (error) {
       throw new Error(`could not create new order ${error}`);
@@ -69,6 +75,8 @@ export class OrderStore {
       conn.release();
       return result.rows[0]
     } catch (error) {
+      
+      
       throw new Error(`could not get completed order with id:${id}  ${error}`);
     }
   }

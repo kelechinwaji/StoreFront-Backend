@@ -11,6 +11,8 @@ const index = async (req: Request, res: Response) => {
     const user = await store.index();
     res.json(user);
   } catch (error) {
+    console.log(error);
+    
     res.status(400);
     res.json(error);
   }
