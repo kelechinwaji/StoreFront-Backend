@@ -85,7 +85,7 @@ const orderRoutes = (app: express.Application) => {
   app.get("/order/complete/:id", completedOrders);
   app.get("/order/current/:id", currentOrders);
   app.get("/order/show/user/:id", showUsers);
-  app.delete("/order/:id", destroy); // Debugging
+  app.delete("/order/:id", destroy); 
 };
 
 export default orderRoutes;
