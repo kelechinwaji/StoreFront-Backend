@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import express from "express";
-import orderRoutes from "./Handlers/orders";
-import productRoutes from "./Handlers/products";
-import userRoutes from "./Handlers/users";
+import orderRoutes from "./controllers/orders";
+import productRoutes from "./controllers/products";
+import userRoutes from "./controllers/users";
 
 const app = express();
 const PORT = 5000;

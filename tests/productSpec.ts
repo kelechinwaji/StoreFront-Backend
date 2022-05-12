@@ -1,4 +1,4 @@
-import { ProductStore, Product } from "../models/products";
+import { ProductStore, Product } from '../src/models/products';
 
 
 

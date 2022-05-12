@@ -2,7 +2,7 @@ import { verifyAuthToken } from "../src/auth services/verifyAuth";
 import { userStore } from "../src/models/users";
 
 
-const auth = new verifyAuthToken();
+//const auth = new verifyAuthToken();
 const store = new userStore()
 
 describe('Testing users models', () =>{
